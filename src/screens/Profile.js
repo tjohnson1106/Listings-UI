@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-class History extends Component {
+class Profile extends Component {
   state = {};
   render() {
     return (
       <View>
-        <Text>History Screen</Text>
+        <Text>Profile Screen</Text>
       </View>
     );
   }
@@ -14,4 +14,4 @@ class History extends Component {
 
 const styles = StyleSheet.create({});
 
-export default History;
+export default Profile;
