@@ -8,16 +8,7 @@ import Saved from "./src/screens/Saved";
 import History from "./src/screens/History";
 import Inbox from "./src/screens/Inbox";
 import Profile from "./src/screens/Profile";
-
-class App extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
-    );
-  }
-}
+import { FLAT_ORANGE, FLAT_BLUE } from "./src/utils/colors";
 
 export default createBottomTabNavigator(
   {
@@ -88,8 +79,9 @@ export default createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: "red",
-      inactiveTintColor: "green",
+      activeTintColor: FLAT_BLUE,
+      //change inactive color
+      inactiveTintColor: FLAT_ORANGE,
       style: {
         backgroundColor: "white",
         borderTopWidth: 0,
