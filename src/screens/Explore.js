@@ -8,11 +8,14 @@ import {
   Platform,
   StatusBar,
   ScrollView,
-  Image
+  Image,
+  Dimensions
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import Category from "../components/explore/Category";
+
+const { height, width } = Dimensions.get("window");
 
 class Explore extends Component {
   componentWillMount() {
@@ -69,6 +72,12 @@ class Explore extends Component {
                   A new selection of experiences for optical
                   enthusiasts
                 </Text>
+                <View style={styles.introImgContainer}>
+                  <Image
+                    source={require("../../assets/explore_image4.jpeg")}
+                    style={styles.introImg}
+                  />
+                </View>
               </View>
             </View>
           </ScrollView>
@@ -135,6 +144,20 @@ const styles = StyleSheet.create({
   subIntro: {
     fontWeight: "100",
     marginTop: 10
+  },
+  introImgContainer: {
+    width: width - 40,
+    height: 200,
+    marginTop: 20
+  },
+  introImg: {
+    flex: 1,
+    height: null,
+    width: null,
+    resizeMode: "cover",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#dddddd"
   }
 });
 
