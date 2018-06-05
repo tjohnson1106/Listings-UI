@@ -80,6 +80,14 @@ class Explore extends Component {
                 </View>
               </View>
             </View>
+            <View style={styles.world}>
+              <Text style={styles.worldText}>
+                Images from around the world
+              </Text>
+              <View style={styles.worldImgRoot}>
+                <View style={styles.worldImg} />
+              </View>
+            </View>
           </ScrollView>
         </View>
       </SafeAreaView>
@@ -158,6 +166,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: "#dddddd"
+  },
+  world: {
+    marginTop: 40
+  },
+  worldText: {
+    fontSize: 24,
+    fontWeight: "700",
+    paddingHorizontal: 20
+  },
+  worldImgRoot: {
+    paddingHorizontal: 20,
+    marginTop: 20
+  },
+  worldImg: {
+    width: width / 2,
+    height: width / 2
   }
 });
 
