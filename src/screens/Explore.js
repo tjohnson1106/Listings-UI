@@ -85,7 +85,14 @@ class Explore extends Component {
                 Images from around the world
               </Text>
               <View style={styles.worldImgRoot}>
-                <View style={styles.worldImg} />
+                <View style={styles.worldImgDimension} />
+                <View style={worldImgTop}>
+                  <Image
+                    source={require("../../explore_world1.jpeg")}
+                    style={styles.worldImg}
+                  />
+                </View>
+                <View style={worldImgBottom} />
               </View>
             </View>
           </ScrollView>
@@ -179,9 +186,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 20
   },
-  worldImg: {
+  worldImgDimension: {
     width: width / 2,
     height: width / 2
+  },
+  worldImgTop: {
+    flex: 1
+  },
+  worldImgBottom: {
+    flex: 1
+  },
+  worldImg: {
+    flex: 1,
+    height: null,
+    width: null
   }
 });
 
