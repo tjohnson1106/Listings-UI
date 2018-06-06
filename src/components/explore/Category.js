@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 class Category extends Component {
-  state = {};
   render() {
     return (
       <View style={styles.customContainer}>

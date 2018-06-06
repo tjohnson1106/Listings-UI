@@ -95,6 +95,18 @@ class Explore extends Component {
                     imageUri={require("../../assets/explore_image3.jpeg")}
                     name="Fire"
                   />
+                  <Category
+                    imageUri={require("../../assets/explore_image5.jpeg")}
+                    name="People"
+                  />
+                  <Category
+                    imageUri={require("../../assets/explore_image6.jpeg")}
+                    name="Tech"
+                  />
+                  <Category
+                    imageUri={require("../../assets/explore_image7.jpeg")}
+                    name="Abstract"
+                  />
                 </ScrollView>
               </View>
               <View style={styles.intro}>
