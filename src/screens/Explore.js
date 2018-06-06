@@ -9,7 +9,8 @@ import {
   StatusBar,
   ScrollView,
   Image,
-  Dimensions
+  Dimensions,
+  Animated
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
@@ -40,6 +41,14 @@ class Explore extends Component {
                 underlineColorAndroid="transparent"
               />
             </View>
+            <Animated.View style={styles._animatedHeader}>
+              <View style={styles.headerTextWrapper}>
+                <Text style={styles.headerText}>Community</Text>
+              </View>
+              <View style={styles.headerTextWrapper}>
+                <Text style={styles.headerText}>Community</Text>
+              </View>
+            </Animated.View>
           </View>
           <ScrollView scrollEventThrottle={16}>
             <View style={styles.scrollTextView}>
@@ -151,6 +160,26 @@ const styles = StyleSheet.create({
     flex: 1,
     fontWeight: "700",
     backgroundColor: "white"
+  },
+  _animatedHeader: {
+    flexDirection: "row",
+    marginHorizontal: 20,
+    position: "relative"
+  },
+
+  headerTextWrapper: {
+    minHeight: 20,
+    minWidth: 40,
+    padding: 5,
+    backgroundColor: "white",
+    borderColor: "#dddddd",
+    borderWidth: 0.2,
+    borderRadius: 1,
+    marginRight: 5
+  },
+  headerText: {
+    fontWeight: "700",
+    fontSize: 10
   },
   scrollTextView: {
     flex: 1,
