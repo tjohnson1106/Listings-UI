@@ -6,7 +6,7 @@ class Tag extends Component {
   render() {
     return (
       <View style={styles.headerTextWrapper}>
-        <Text style={styles.headerText}>Saga Stories</Text>
+        <Text style={styles.headerText}>this.props.name</Text>
       </View>
     );
   }

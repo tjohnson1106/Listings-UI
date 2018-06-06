@@ -22,10 +22,20 @@ const { height, width } = Dimensions.get("window");
 
 class Explore extends Component {
   componentWillMount() {
+    this.scrollY = Animated.Value(0);
+
     this.startHeaderHeight = 80;
+    this.endHeaderHeight = 50;
     if (Platform.OS === "android") {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
+      this.endHeaderHeight = 70 + StatusBar.currentHeight;
     }
+
+    this.animatedHeaderHeight = this.scrollY.interpolate({
+      inputRange: [0, 50],
+      outputRange: [this.startHeaderHeight, this.endHeaderHeight],
+      extrapolate: "clamp"
+    });
   }
 
   render() {
@@ -43,12 +53,16 @@ class Explore extends Component {
               />
             </View>
             <Animated.View style={styles._animatedHeader}>
-              <View style={styles.headerTextWrapper}>
-                <Text style={styles.headerText}>Community</Text>
-              </View>
+              <Tag name="Collections" />
+              <Tag name="Photos" />
             </Animated.View>
           </View>
-          <ScrollView scrollEventThrottle={16}>
+          <ScrollView
+            scrollEventThrottle={16}
+            onScroll={Animated.event([
+              { nativeEvent: { contentOffset: { y: this.scrollY } } }
+            ])}
+          >
             <View style={styles.scrollTextView}>
               <Text style={styles.scrollText}>
                 What are you looking for?
