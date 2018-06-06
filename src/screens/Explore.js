@@ -16,6 +16,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 
 import Category from "../components/explore/Category";
 import World from "../components/explore/World";
+import Tag from "../components/explore/Tag";
 
 const { height, width } = Dimensions.get("window");
 
@@ -42,9 +43,6 @@ class Explore extends Component {
               />
             </View>
             <Animated.View style={styles._animatedHeader}>
-              <View style={styles.headerTextWrapper}>
-                <Text style={styles.headerText}>Community</Text>
-              </View>
               <View style={styles.headerTextWrapper}>
                 <Text style={styles.headerText}>Community</Text>
               </View>
@@ -167,20 +165,6 @@ const styles = StyleSheet.create({
     position: "relative"
   },
 
-  headerTextWrapper: {
-    minHeight: 20,
-    minWidth: 40,
-    padding: 5,
-    backgroundColor: "white",
-    borderColor: "#dddddd",
-    borderWidth: 0.2,
-    borderRadius: 1,
-    marginRight: 5
-  },
-  headerText: {
-    fontWeight: "700",
-    fontSize: 10
-  },
   scrollTextView: {
     flex: 1,
     backgroundColor: "white",
