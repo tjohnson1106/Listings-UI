@@ -34,7 +34,7 @@ class Explore extends Component {
             <View style={styles.inputView}>
               <Icon name="ios-search" size={20} />
               <TextInput
-                placeholder="Some Placeholder"
+                placeholder="search experiences"
                 placeholderTextColor="grey"
                 style={styles.input}
                 underlineColorAndroid="transparent"
@@ -53,7 +53,7 @@ class Explore extends Component {
                 >
                   <Category
                     imageUri={require("../../assets/explore_image1.jpeg")}
-                    name="Home"
+                    name="Friends"
                   />
                   <Category
                     imageUri={require("../../assets/explore_image2.jpeg")}
@@ -67,7 +67,7 @@ class Explore extends Component {
               </View>
               <View style={styles.intro}>
                 <Text style={styles.introText}>
-                  Introducing Premium Services
+                  Introducing Collections
                 </Text>
                 <Text style={styles.subIntro}>
                   A new selection of experiences for optical
@@ -86,7 +86,34 @@ class Explore extends Component {
                 Images from around the world
               </Text>
               <View style={styles.worldImgRoot}>
-                <World width={width} />
+                <World
+                  width={width}
+                  photographer="Forest Silva"
+                  title="The World"
+                  description="A look at the world on fire"
+                  source={require("../../assets/world_image1.jpeg")}
+                />
+                <World
+                  width={width}
+                  photographer="Mookey Jones"
+                  title="Imagination"
+                  description="Collection 3"
+                  source={require("../../assets/world_image2.jpeg")}
+                />
+                <World
+                  width={width}
+                  photographer="Forest Silva"
+                  title="New York"
+                  description="New York circa 1997"
+                  source={require("../../assets/world_image3.jpeg")}
+                />
+                <World
+                  width={width}
+                  photographer="Unknow person"
+                  title="Dawn"
+                  description="South African dawn"
+                  source={require("../../assets/world_image4.jpeg")}
+                />
               </View>
             </View>
           </ScrollView>
@@ -178,7 +205,10 @@ const styles = StyleSheet.create({
   },
   worldImgRoot: {
     paddingHorizontal: 20,
-    marginTop: 20
+    marginTop: 20,
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between"
   }
 });
 
