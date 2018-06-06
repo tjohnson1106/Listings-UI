@@ -9,28 +9,51 @@ import {
   StatusBar,
   ScrollView,
   Image,
-  Dimensions
+  Dimensions,
+  Animated
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import Category from "../components/explore/Category";
 import World from "../components/explore/World";
+import Tag from "../components/explore/Tag";
 
 const { height, width } = Dimensions.get("window");
 
 class Explore extends Component {
   componentWillMount() {
+    this.scrollY = new Animated.Value(0);
+
     this.startHeaderHeight = 80;
+    this.endHeaderHeight = 50;
     if (Platform.OS === "android") {
       this.startHeaderHeight = 100 + StatusBar.currentHeight;
+      this.endHeaderHeight = 70 + StatusBar.currentHeight;
     }
+
+    this.animatedHeaderHeight = this.scrollY.interpolate({
+      inputRange: [0, 50],
+      outputRange: [this.startHeaderHeight, this.endHeaderHeight],
+      extrapolate: "clamp"
+    });
+
+    this.animatedOpacity = this.animatedHeaderHeight.interpolate({
+      inputRange: [this.endHeaderHeight, this.startHeaderHeight],
+      outputRange: [0, 1],
+      extrapolate: "clamp"
+    });
+    this.animatedTagTop = this.animatedHeaderHeight.interpolate({
+      inputRange: [this.endHeaderHeight, this.startHeaderHeight],
+      outputRange: [-30, 10],
+      extrapolate: "clamp"
+    });
   }
 
   render() {
     return (
       <SafeAreaView style={styles.containerAreaView}>
         <View style={styles.outerContainer}>
-          <View style={styles.innerContainer}>
+          <Animated.View style={styles.innerContainer}>
             <View style={styles.inputView}>
               <Icon name="ios-search" size={20} />
               <TextInput
@@ -40,8 +63,17 @@ class Explore extends Component {
                 underlineColorAndroid="transparent"
               />
             </View>
-          </View>
-          <ScrollView scrollEventThrottle={16}>
+            <Animated.View style={styles._animatedHeader}>
+              <Tag name="Collections" />
+              <Tag name="Photos" />
+            </Animated.View>
+          </Animated.View>
+          <ScrollView
+            scrollEventThrottle={16}
+            onScroll={Animated.event([
+              { nativeEvent: { contentOffset: { y: this.scrollY } } }
+            ])}
+          >
             <View style={styles.scrollTextView}>
               <Text style={styles.scrollText}>
                 What are you looking for?
@@ -131,9 +163,9 @@ const styles = StyleSheet.create({
     flex: 1
   },
   innerContainer: {
-    height: this.startHeaderHeight,
+    height: this.animatedHeaderHeight,
     backgroundColor: "white",
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.8,
     borderBottomColor: "#dddddd"
   },
   inputView: {
@@ -145,13 +177,21 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.2,
     elevation: 1,
-    marginTop: Platform.OS === "android" ? 30 : null
+    marginTop: Platform.OS == "android" ? 30 : null
   },
   input: {
     flex: 1,
     fontWeight: "700",
     backgroundColor: "white"
   },
+  _animatedHeader: {
+    flexDirection: "row",
+    marginHorizontal: 20,
+    position: "relative",
+    top: this.animatedTagTop,
+    opacity: this.animatedOpacity
+  },
+
   scrollTextView: {
     flex: 1,
     backgroundColor: "white",
